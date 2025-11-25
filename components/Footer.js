@@ -1,9 +1,17 @@
 function Footer() {
   try {
+    const socialLinks = [
+      { name: "github", url: "https://github.com/KishoreRavi-7280?tab=repositories" },
+      { name: "linkedin", url: "https://www.linkedin.com/in/kishore-ravi-/" }
+    ];
+
     return (
-      <footer className="py-16 relative overflow-hidden bg-gradient-to-t from-gray-900/50 to-transparent" data-name="footer" data-file="components/Footer.js">
+      <footer className="py-16 relative overflow-hidden bg-gradient-to-t from-gray-900/50 to-transparent">
         <div className="container mx-auto px-4 relative z-10">
+          
           <div className="grid md:grid-cols-4 gap-8 mb-12">
+
+            {/* Brand Section */}
             <div className="col-span-2 md:col-span-1">
               <div className="flex items-center space-x-2 mb-6">
                 <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-cyan-400 to-purple-500 flex items-center justify-center pulse-glow">
@@ -11,26 +19,31 @@ function Footer() {
                 </div>
                 <span className="text-xl font-bold gradient-text">Kishore Ravi</span>
               </div>
+
               <p className="text-gray-300 mb-6">
                 Creative developer crafting digital experiences that inspire and engage users through innovative design.
               </p>
+
               <div className="flex space-x-4">
-                {['github', 'linkedin', 'twitter', 'dribbble'].map((social) => (
+                {socialLinks.map((social) => (
                   <a
-                    key={social}
-                    href="#"
+                    key={social.name}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-10 h-10 glass-card rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300"
                   >
-                    <div className={`icon-${social} text-cyan-400 text-lg`}></div>
+                    <div className={`icon-${social.name} text-cyan-400 text-lg`}></div>
                   </a>
                 ))}
               </div>
             </div>
 
+            {/* Quick Links */}
             <div>
               <h4 className="text-lg font-semibold text-white mb-6">Quick Links</h4>
               <ul className="space-y-3">
-                {['Home', 'About', 'Skills', 'Projects'].map((link) => (
+                {["Home", "About", "Skills", "Projects"].map((link) => (
                   <li key={link}>
                     <a
                       href={`#${link.toLowerCase()}`}
@@ -43,17 +56,28 @@ function Footer() {
               </ul>
             </div>
 
+            {/* Portfolio Section */}
             <div>
-              <h4 className="text-lg font-semibold text-white mb-6">Services</h4>
+              <h4 className="text-lg font-semibold text-white mb-6">Portfolio</h4>
               <ul className="space-y-3">
-                {['Web Development', 'UI/UX Design', 'Mobile Apps', 'Consulting'].map((service) => (
-                  <li key={service}>
-                    <span className="text-gray-300">{service}</span>
+                {[
+                  { name: "Web Projects", link: "#projects" },
+                  { name: "Blogs", link: "#about" },
+                  { name: "Certifications", link: "#skills" }
+                ].map((item) => (
+                  <li key={item.name}>
+                    <a
+                      href={item.link}
+                      className="text-gray-300 hover:text-cyan-400 transition-colors duration-300"
+                    >
+                      {item.name}
+                    </a>
                   </li>
                 ))}
               </ul>
             </div>
 
+            {/* Contact Info */}
             <div>
               <h4 className="text-lg font-semibold text-white mb-6">Contact Info</h4>
               <div className="space-y-3">
@@ -67,32 +91,42 @@ function Footer() {
                 </div>
                 <div className="flex items-center space-x-3">
                   <div className="icon-map-pin text-cyan-400 text-lg"></div>
-                  <span className="text-gray-300">Trichy, Tamilnadu, IN</span>
+                  <span className="text-gray-300">Trichy, Tamil Nadu, India</span>
                 </div>
               </div>
             </div>
+
           </div>
 
+          {/* Bottom Section */}
           <div className="border-t border-gray-700 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center">
               <p className="text-gray-400 text-sm mb-4 md:mb-0">
                 © 2025 Kishore Ravi. All rights reserved.
               </p>
+
               <div className="flex space-x-6">
-                <a href="#" className="text-gray-400 hover:text-cyan-400 text-sm transition-colors">
+                  <div className="flex space-x-6">
+                <a href="../public/privacy.html" className="text-gray-400 hover:text-cyan-400 text-sm transition-colors">
                   Privacy Policy
                 </a>
-                <a href="#" className="text-gray-400 hover:text-cyan-400 text-sm transition-colors">
+
+                <a href="../public/terms.html" className="text-gray-400 hover:text-cyan-400 text-sm transition-colors">
                   Terms of Service
                 </a>
               </div>
+
+              </div>
             </div>
           </div>
+
         </div>
       </footer>
     );
   } catch (error) {
-    console.error('Footer component error:', error);
+    console.error("Footer component error:", error);
     return null;
   }
 }
+
+export default Footer;

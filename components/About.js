@@ -40,7 +40,7 @@ function About() {
                 <div className="absolute -bottom-6 right-8 w-32 h-32 glass-card rounded-2xl p-4 floating-animation">
                   <div className="text-center">
                     <div className="text-3xl font-bold gradient-text-white">5+</div>
-                    <div className="text-sm text-white-900">Years <br></br>Experience</div>
+                    <div className="text-sm text-white-900">Months <br></br>Experience</div>
                   </div>
                 </div>
               </div>
@@ -58,10 +58,10 @@ function About() {
 
               <div className="grid grid-cols-2 gap-6 mb-8">
                 {[
-                  { icon: 'palette', label: 'Creative Design', count: '200+' },
-                  { icon: 'code', label: 'Projects Built', count: '150+' },
-                  { icon: 'users', label: 'Happy Clients', count: '80+' },
-                  { icon: 'award', label: 'Awards Won', count: '15+' }
+                  { icon: 'palette', label: 'Creative Design', count: '20+' },
+                  { icon: 'code', label: 'Projects Built', count: '10+' },
+                  { icon: 'users', label: 'Happy Clients', count: '2' },
+                  { icon: 'award', label: 'Certifiactions', count: '2' }
                 ].map((stat, index) => (
                   <div 
                     key={stat.label}

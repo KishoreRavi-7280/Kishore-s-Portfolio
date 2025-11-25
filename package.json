@@ -1,5 +1,17 @@
 {
+  "name": "kishore-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server/server.js",
+    "client": "react-scripts start"
+  },
   "dependencies": {
-    "@emailjs/browser": "^4.4.1"
+    "@emailjs/browser": "^4.4.1",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "openai": "^6.9.1"
   }
 }

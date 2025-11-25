@@ -46,7 +46,7 @@ function App() {
         <Projects />
         <Contact />
         <Footer />
-        <Chatbot />
+        
       </div>
     );
   } catch (error) {

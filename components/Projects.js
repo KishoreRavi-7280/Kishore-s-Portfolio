@@ -1,83 +1,80 @@
-function Projects() {
-  const [isVisible, setIsVisible] = React.useState(false);
-  const [selectedProject, setSelectedProject] = React.useState(null);
-  const [selectedFilter, setSelectedFilter] = React.useState('All');
+
+export default function Projects() {
+  const [selectedFilter, setSelectedFilter] = React.useState("All");
   const [currentIndex, setCurrentIndex] = React.useState(0);
 
   const projects = [
     {
       id: 1,
-      title: 'E-Commerce Platform',
-      description: 'Modern e-commerce solution with AI-powered recommendations',
-      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
-      tech: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      category: 'Web App',
-      link: '#'
+      title: "Printer Shop Website",
+      description:
+        "Designed and developed a simple printer shop website showcasing services, pricing, and contact details using HTML and CSS.",
+      image:
+        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
+      tech: ["HTML5", "CSS3", "JavaScript"],
+      category: "Web App",
+      link: "https://kishoreravi-7280.github.io/RPP/",
     },
     {
       id: 2,
-      title: 'Mobile Banking App',
-      description: 'Secure mobile banking with biometric authentication',
-      image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop',
-      tech: ['React Native', 'Firebase', 'Node.js'],
-      category: 'Mobile App',
-      link: '#'
+      title: "Travel Blog",
+      description:
+        "Created a simple travel blog website using HTML and CSS to share travel experiences with clean layout and easy navigation.",
+      image:
+        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop",
+      tech: ["HTML5", "CSS3", "JavaScript"],
+      category: "Web App",
+      link: "https://kishoreravi-7280.github.io/Landingpage/",
     },
     {
       id: 3,
-      title: 'AI Dashboard',
-      description: 'Real-time analytics dashboard with machine learning insights',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
-      tech: ['Vue.js', 'Python', 'TensorFlow', 'D3.js'],
-      category: 'Data Visualization',
-      link: '#'
+      title: "Student Management-System",
+      description:
+        "Developed a console-based Student Management System in Java with features to add, update, view, and delete student records.",
+      image:
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+      tech: ["Java"],
+      category: "Data Visualization",
+      link: "https://github.com/KishoreRavi-7280/Student-Management-System.git",
     },
-    {
-      id: 4,
-      title: 'Social Media Platform',
-      description: 'Next-gen social platform with real-time messaging',
-      image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop',
-      tech: ['Next.js', 'Socket.io', 'PostgreSQL'],
-      category: 'Social Platform',
-      link: '#'
-    }
   ];
 
-  const filters = ['All', 'Web App', 'Mobile App', 'Data Visualization', 'Social Platform'];
-  const filteredProjects = selectedFilter === 'All' 
-    ? projects 
-    : projects.filter(project => project.category === selectedFilter);
+  const filters = ["All", "Web App", "Mobile App", "Data Visualization", "Social Platform"];
+
+  const filteredProjects =
+    selectedFilter === "All"
+      ? projects
+      : projects.filter((p) => p.category === selectedFilter);
+
+  // slides per view based on screen width
+  const slidesPerView =
+    window.innerWidth >= 1024 ? 3 : window.innerWidth >= 640 ? 2 : 1;
+
+  const maxIndex = Math.ceil(filteredProjects.length / slidesPerView) - 1;
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev === maxIndex ? 0 : prev + 1));
+  };
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev === 0 ? filteredProjects.length - 1 : prev - 1));
+    setCurrentIndex((prev) => (prev === 0 ? maxIndex : prev - 1));
   };
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev === filteredProjects.length - 1 ? 0 : prev + 1));
-  };
-
-  React.useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsVisible(entry.isIntersecting),
-      { threshold: 0.3 }
-    );
-
-    const element = document.getElementById('projects');
-    if (element) observer.observe(element);
-
-    return () => observer.disconnect();
-  }, []);
 
   return (
-    <section id="projects" className="py-20 relative overflow-hidden" data-name="projects">
+    <section id="projects" className="py-20 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/10 to-purple-900/10"></div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className={`text-center mb-16 ${isVisible ? 'animate-fade-up' : ''}`}>
-          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">Featured Projects</h2>
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-4">
+            Featured Projects
+          </h2>
           <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-            Showcasing innovative solutions that push the boundaries of technology and design.
+            Showcasing innovative solutions that push the boundaries of
+            technology and design.
           </p>
 
+          {/* Filters */}
           <div className="flex flex-wrap justify-center gap-4">
             {filters.map((filter) => (
               <button
@@ -88,8 +85,8 @@ function Projects() {
                 }}
                 className={`px-6 py-2 rounded-full transition-all duration-300 ${
                   selectedFilter === filter
-                    ? 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white'
-                    : 'glass-card text-gray-300 hover:text-white'
+                    ? "bg-gradient-to-r from-cyan-500 to-purple-600 text-white"
+                    : "glass-card text-gray-300 hover:text-white"
                 }`}
               >
                 {filter}
@@ -98,75 +95,77 @@ function Projects() {
           </div>
         </div>
 
-        {/* Slider */}
-        {filteredProjects.length > 0 && (
-          <div className="relative overflow-hidden">
-            <div className="flex transition-transform duration-500">
-              {filteredProjects.map((project, index) => (
-                <div
-                  key={project.id}
-                  className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-2"
-                  style={{ transform: `translateX(-${currentIndex * (100 / filteredProjects.length)}%)` }}
-                >
-                  <div className="group morph-card overflow-hidden cursor-pointer animate-scale-in">
-                    <div className="relative overflow-hidden">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-48 md:h-52 lg:h-48 object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <div className="absolute top-4 right-4 px-3 py-1 glass-card rounded-full text-sm">
-                        {project.category}
-                      </div>
+        {/* Responsive Slider */}
+        <div className="relative overflow-hidden">
+          <div
+            className="flex transition-transform duration-500"
+            style={{
+              transform: `translateX(-${currentIndex * 100}%)`,
+              width: `${filteredProjects.length * (100 / slidesPerView)}%`,
+            }}
+          >
+            {filteredProjects.map((project) => (
+              <div
+                key={project.id}
+                className="w-full sm:w-1/2 lg:w-1/3 px-4 flex-shrink-0"
+              >
+                <div className="morph-card shadow-lg rounded-xl overflow-hidden group">
+                  {/* Image */}
+                  <div className="relative w-full h-70 bg-black overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500"
+                    />
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-6">
+                    <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-all">
+                      {project.title}
+                    </h3>
+
+                    <p className="text-gray-300 mb-4">{project.description}</p>
+
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.tech.map((t) => (
+                        <span
+                          key={t}
+                          className="px-3 py-1 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-full text-sm text-cyan-300 border border-cyan-500/30"
+                        >
+                          {t}
+                        </span>
+                      ))}
                     </div>
 
-                    <div className="p-6">
-                      <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors duration-300">
-                        {project.title}
-                      </h3>
-                      <p className="text-gray-300 mb-4">{project.description}</p>
-
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {project.tech.map((tech) => (
-                          <span
-                            key={tech}
-                            className="px-3 py-1 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-full text-sm text-cyan-300 border border-cyan-500/30"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-
-                      <button className="w-full py-3 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg font-semibold hover:scale-105 transition-all duration-300">
+                    <a href={project.link} target="_blank" rel="noopener noreferrer">
+                      <button className="w-full py-3 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg font-semibold hover:scale-105 transition-all">
                         View Project
                       </button>
-                    </div>
+                    </a>
                   </div>
                 </div>
-              ))}
-            </div>
-
-            {/* Prev / Next Buttons */}
-            {filteredProjects.length > 1 && (
-              <>
-                <button
-                  onClick={prevSlide}
-                  className="absolute top-1/2 -translate-y-1/2 left-2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full"
-                >
-                  &#10094;
-                </button>
-                <button
-                  onClick={nextSlide}
-                  className="absolute top-1/2 -translate-y-1/2 right-2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full"
-                >
-                  &#10095;
-                </button>
-              </>
-            )}
+              </div>
+            ))}
           </div>
-        )}
+
+          {/* Buttons */}
+          <button
+            onClick={prevSlide}
+            className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full"
+          >
+            &#10094;
+          </button>
+
+          <button
+            onClick={nextSlide}
+            className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full"
+          >
+            &#10095;
+          </button>
+        </div>
       </div>
     </section>
   );
 }
+

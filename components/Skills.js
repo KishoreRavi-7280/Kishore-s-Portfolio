@@ -4,10 +4,10 @@ function Skills() {
 
   const skills = [
     { name: 'Html5/CSS3', level: 95, color: 'from-blue-400 to-cyan-400' },
-    { name: 'React/Tailwindcss', level: 88, color: 'from-yellow-400 to-orange-400' },
-    { name: 'Java Spring Boot', level: 83, color: 'from-pink-400 to-purple-400' },
-    { name: 'Node.js/ SQl', level: 80, color: 'from-green-400 to-emerald-400' },
-    { name: 'Docker containerization', level: 76, color: 'from-blue-600 to-blue-400' }
+    { name: 'Bootstrap/Tailwindcss', level: 88, color: 'from-yellow-400 to-orange-400' },
+    { name: 'Java /Spring Boot', level: 83, color: 'from-pink-400 to-purple-400' },
+    { name: 'My SQl', level: 80, color: 'from-green-400 to-emerald-400' },
+    { name: 'DSA/ Problem-Solving', level: 76, color: 'from-blue-600 to-blue-400' }
   ];
 
   React.useEffect(() => {
@@ -78,12 +78,12 @@ function Skills() {
             <div id="skillbox" className={`${isVisible ? 'animate-slide-right' : 'opacity-0'}`}>
               <div className="grid grid-cols-2 gap-6">
                 {[
-                  { icon: 'monitor', title: 'Frontend Development', desc: 'React Js, Tailwind Css' },
-                  { icon: 'server', title: 'Backend Development', desc: 'Node.js, Java Spring Boot' },
+                  { icon: 'monitor', title: 'Frontend Development', desc: 'Html5, Css3, Java Script, Tailwind Css' },
+                  { icon: 'server', title: 'Backend Development', desc: ' Java/Spring Boot' },
                   { icon: 'smartphone', title: 'Prototyping', desc: 'Figma' },
-                  { icon: 'database', title: 'Database Design', desc: 'MongoDB, MySQL' },
-                  { icon: 'cloud', title: 'Cloud Services', desc: 'AWS,' },
-                  { icon: 'git-branch', title: 'Version Control', desc: 'Git, GitHub, GitLab' }
+                  { icon: 'database', title: 'Database Design', desc: ' MySQL' },
+                  { icon: 'cloud', title: 'Cloud Services', desc: 'AWS Basics,' },
+                  { icon: 'git-branch', title: 'Version Control', desc: 'Git, GitHub' }
                 ].map((item, index) => (
                   <div 
                     key={item.title}

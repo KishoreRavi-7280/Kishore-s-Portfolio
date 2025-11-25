@@ -20,9 +20,12 @@ function Hero() {
       <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden" data-name="hero" data-file="components/Hero.js">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-cyan-900/20"></div>
         
-        <div id="hero" className="container mx-auto  px-4 z-10">
+        <div id="hero" className="container mx-auto px-4 z-10">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <div className=" lg:mx-10 lg:my-10 lg:ml-20 lg:mt-20 text-center lg:text-left animate-slide-left">
+            
+            {/* Left Side */}
+            <div className="lg:mx-10 lg:my-10 lg:ml-20 lg:mt-20 text-center lg:text-left animate-slide-left">
+              
               <h1 className="text-4xl sm:text-6xl lg:text-8xl font-bold mb-6">
                 <span className="gradient-text">Hello,</span>
                 <br />
@@ -41,33 +44,46 @@ function Hero() {
                 Specializing in interactive design and immersive web solutions.
               </p>
 
+              {/* Buttons */}
               <div id="btn1" className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <a href="#projects"
-                ><button className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full font-semibold hover:scale-105 transition-all duration-300 pulse-glow">
-                  View My Work
-                </button></a>
-               <a href="../Pdf/Kishore Ravi Resume.pdf.pdf"> <button className="px-8 py-4 glass-card rounded-full font-semibold hover:scale-105 transition-all duration-300 border border-cyan-400/50">
-                View My CV
-                </button></a>
+                <a href="#projects">
+                  <button className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full font-semibold hover:scale-105 transition-all duration-300 pulse-glow">
+                    View My Work
+                  </button>
+                </a>
+
+                <a href="../Pdf/KishoreRavi Resume .pdf.pdf" target="_blank">
+                  <button className="px-8 py-4 glass-card rounded-full font-semibold hover:scale-105 transition-all duration-300 border border-cyan-400/50">
+                    View My CV
+                  </button>
+                </a>
               </div>
 
+              {/* Social Links */}
               <div id="social-links" className="flex justify-center lg:justify-start space-x-6 mt-8 lg:ml-7">
-                {['github', 'linkedin', 'instagram', 'dribbble'].map((social, index) => (
+                {[
+                  { name: 'github', url: 'https://github.com/KishoreRavi-7280?tab=repositories' },
+                  { name: 'linkedin', url: 'https://www.linkedin.com/in/kishore-ravi-/' },
+                  //{ name: 'reddit', url: 'https://www.reddit.com/user/yourreddit', type: 'svg' }
+                ].map((social, index) => (
                   <a
-                    key={social}
-                    href="#"
+                    key={social.name}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-12 h-12 glass-card rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 animate-fade-up"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
-                    <div className={`icon-${social} text-cyan-400 text-xl`}></div>
+                    <div className={`icon-${social.name} text-cyan-400 text-xl`}></div>
                   </a>
                 ))}
               </div>
             </div>
 
+            {/* Right Side */}
             <div className="flex justify-center lg:justify-center animate-slide-right">
               <div className="relative">
-                <div className=" img w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden glass-card floating-animation">
+                <div className="img w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden glass-card floating-animation">
                   <img 
                     src="../Images/Kishore,s Profile pic.jpg"
                     alt="Profile"
@@ -84,14 +100,17 @@ function Hero() {
                 </div>
               </div>
             </div>
+
           </div>
         </div>
 
+        {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
           <div className="w-8 h-12 border-2 border-cyan-400 rounded-full flex justify-center">
             <div className="w-1 h-3 bg-cyan-400 rounded-full mt-2 animate-pulse"></div>
           </div>
         </div>
+
       </section>
     );
   } catch (error) {
@@ -99,3 +118,4 @@ function Hero() {
     return null;
   }
 }
+
