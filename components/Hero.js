@@ -85,7 +85,7 @@ function Hero() {
               <div className="relative">
                 <div className="img w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden glass-card floating-animation">
                   <img 
-                    src="../Images/Kishore,s Profile pic.jpg"
+                    src="../Images/Profile pic.jpg"
                     alt="Profile"
                     className="lg:mx-auto w-full h-full object-cover"
                   />
