@@ -84,11 +84,12 @@ function Hero() {
             <div className="flex justify-center lg:justify-center animate-slide-right">
               <div className="relative">
                 <div className="img w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden glass-card floating-animation">
-                  <img 
-                    src="../Images/Profile pic.jpg"
+                  <img
+                    src="https://drive.google.com/thumbnail?id=1i71-iBXWq7aZ2DaWZSlrXxZlooRSt7Ds&sz=w1000"
                     alt="Profile"
                     className="lg:mx-auto w-full h-full object-cover"
                   />
+
                 </div>
                 
                 <div className="absolute -top-4 -right-4 w-20 h-20 glass-card rounded-full flex items-center justify-center animate-rotate-in">
